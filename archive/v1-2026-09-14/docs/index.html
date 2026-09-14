@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Выбор вклада — сравнение ставок</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Выбор вклада</h1>
+  <p class="subtitle" id="meta-info">Загрузка данных…</p>
+</header>
+
+<main>
+  <section id="filters" class="filters">
+    <div class="filter-group">
+      <label for="f-amount">Сумма, ₽</label>
+      <input id="f-amount" type="number" step="100000" min="0">
+    </div>
+    <div class="filter-group">
+      <label for="f-term">Срок</label>
+      <select id="f-term"><option value="">Любой</option></select>
+    </div>
+    <div class="filter-group">
+      <label for="f-type">Тип</label>
+      <select id="f-type">
+        <option value="all">Все</option>
+        <option value="вклад">Вклад</option>
+        <option value="счет">Счёт</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-pop">Пополнение</label>
+      <select id="f-pop">
+        <option value="">Не важно</option>
+        <option value="да">Только с пополнением</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-sny">Снятие</label>
+      <select id="f-sny">
+        <option value="">Не важно</option>
+        <option value="да">Только со снятием</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label for="f-spend">Траты в месяц</label>
+      <select id="f-spend"><option value="">Не важно</option></select>
+    </div>
+    <div class="filter-group">
+      <label for="f-sub">Подписка</label>
+      <select id="f-sub"><option value="">Не важно</option></select>
+    </div>
+    <div class="filter-group toggle-group">
+      <label>
+        <input id="f-newmoney" type="checkbox" checked>
+        Все деньги новые
+      </label>
+    </div>
+  </section>
+
+  <section id="top-picks" class="top-picks">
+    <h2>Лучшие варианты</h2>
+    <div id="top-cards" class="cards"></div>
+  </section>
+
+  <div class="table-controls">
+    <span id="count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th data-col="bank">Банк</th>
+          <th data-col="product">Продукт</th>
+          <th data-col="type">Тип</th>
+          <th data-col="duration">Срок</th>
+          <th data-col="rate" class="sort-desc">Ставка, %</th>
+          <th data-col="badges">Условия</th>
+          <th data-col="pop">Пополн</th>
+          <th data-col="sny">Снятие</th>
+          <th data-col="min_sum">Мин. сумма</th>
+          <th data-col="income">Доход ~</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <p>Данные носят справочный характер. Перед принятием решения уточняйте условия в банке.</p>
+  <p id="footer-meta"></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
