@@ -181,6 +181,15 @@
     $("#count").textContent = `Показано ${rows.length} из ${DATA.rows.length} сценариев`;
   }
 
+  /* ---- sticky thead offset ---- */
+  function updateStickyTop() {
+    const filters = document.getElementById("filters");
+    if (filters) {
+      const r = filters.getBoundingClientRect();
+      document.documentElement.style.setProperty("--sticky-top", (r.bottom - r.top) + "px");
+    }
+  }
+
   /* ---- init ---- */
   async function init() {
     try {
@@ -255,6 +264,11 @@
     });
 
     render();
+
+    updateStickyTop();
+    window.addEventListener("resize", updateStickyTop);
+    window.addEventListener("scroll", updateStickyTop);
+    document.addEventListener("visibilitychange", updateStickyTop);
   }
 
   init();

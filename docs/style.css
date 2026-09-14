@@ -83,10 +83,10 @@ h1{font-size:1.6rem;font-weight:700}
 
 /* ---------- table ---------- */
 .table-controls{max-width:960px;margin:0 auto .3rem;padding:0 1rem;font-size:.8rem;color:var(--fg-muted)}
-.table-wrap{overflow-x:auto;max-width:960px;margin:0 auto;padding:0 .5rem 1.2rem}
+.table-wrap{max-width:960px;margin:0 auto;padding:0 .5rem 1.2rem;overflow:visible}
 table{width:100%;border-collapse:collapse;font-size:.84rem;background:var(--bg-table)}
 thead th{
-  position:sticky;top:60px;
+  position:sticky;top:var(--sticky-top,0);z-index:5;
   background:var(--bg-card);border-bottom:2px solid var(--border);
   text-align:left;padding:6px 8px;white-space:nowrap;cursor:pointer;user-select:none;
 }
@@ -118,7 +118,12 @@ footer p+p{margin-top:.2rem}
 
 @media (max-width:640px){
   html{font-size:14px}
-  .filters{flex-direction:column}
+  .filters{flex-direction:column;position:static}
   .filter-group{min-width:100%}
   .cards{flex-direction:column}
+  .table-wrap{overflow-x:auto}
+  thead th{position:static}
+  /* скрываем второстепенные колонки: Пополнение, Снятие, Мин.сумма, Банк */
+  th:nth-child(1),th:nth-child(7),th:nth-child(8),th:nth-child(9),
+  td:nth-child(1),td:nth-child(7),td:nth-child(8),td:nth-child(9){display:none}
 }
